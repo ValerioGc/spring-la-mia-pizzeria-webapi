@@ -18,8 +18,8 @@ public class PizzaService {
 	private PizzaRepo pizzaRepo;
 	
 // Save
-	public void save(Pizza pizza) {
-		pizzaRepo.save(pizza);
+	public Pizza save(Pizza pizza) {
+		return pizzaRepo.save(pizza);
 	}
 		
 // Find
