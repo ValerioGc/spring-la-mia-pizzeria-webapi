@@ -6,6 +6,7 @@ import org.pizzeria.crud.pojo.Pizza;
 import org.pizzeria.crud.serv.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +24,7 @@ public class PizzaApiController {
 	PizzaService pizzaServ;
 
 //  Index
-	@RequestMapping("/index") 
+	@GetMapping("/index") 
 	public List<Pizza> getPizzasList() {
 		
 		List<Pizza> pizzasList = pizzaServ.findAll();
@@ -69,9 +70,15 @@ public class PizzaApiController {
 	
 	
 //  Delete 
-	@PostMapping("/delete/{id}")
-	public void deletePizza(@PathVariable("id") int id) {
-		pizzaServ.deletePizzaById(id);
+	@GetMapping("/delete/{id}")
+	public boolean deletePizza(@PathVariable("id") int id) {
+		try {
+			Pizza pizza = pizzaServ.findPizzaById(id).get();
+			pizzaServ.deletePizza(pizza);
+		} catch(Exception e) { 
+			return false; 
+		}
+		return true;
 	}
 }
  

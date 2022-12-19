@@ -59,9 +59,9 @@
                 </form>
 
 
-                <button>Dettagli</button>
+                <a href="/pizza/details">Dettagli</a>
                 <button @click="showEditForm(pizza.id)">Modifica</button>
-                <button>Elimina</button>
+                <button @click="deletePizza(pizza.id)">Elimina</button>
             </div>
         </div>
         <div v-else>
@@ -165,6 +165,18 @@
                         
                         this.pizzasArray[indx] = pizza;
                     });
+            },
+        //  Elimina Pizza
+            deletePizza(id) {
+                axios.get(this.apiUrl + '/pizzas/delete/' + id)
+                    .then(response => {
+                        const del = response.data;
+                        if (del == false) return;
+
+                        const indx = this.getPizzaIndexById(id);
+                        this.pizzasArray.splice(indx, 1);
+                    });
+                    this.msg ="Elemento eliminato correttamente"
             }
         }
     })

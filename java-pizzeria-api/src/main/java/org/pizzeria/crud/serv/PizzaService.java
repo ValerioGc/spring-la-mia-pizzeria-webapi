@@ -32,6 +32,10 @@ public class PizzaService {
 		return pizzaRepo.findById(id);
 	}
 	
+// Delete Pizza
+	public void deletePizza(Pizza pizza) {
+		pizzaRepo.delete(pizza);
+	}
 // Delete by ID
 	public void deletePizzaById(int id) {
 		pizzaRepo.deleteById(id);
