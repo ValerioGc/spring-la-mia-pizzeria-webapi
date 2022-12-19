@@ -1,9 +1,9 @@
 <template>
     <main>
         <div v-if="pizzasArray.length > 0" class="card-container" >
-            <div class="card">
-                <ul v-for="(pizza, index) in pizzasArray" :key="index">
-                    <li>Noem: {{pizza.name}}</li>
+            <div v-for="(pizza, index) in pizzasArray" :key="index" class="card">
+                <ul >
+                    <li>Nome: {{pizza.name}}</li>
                     <li>Descrizione: {{pizza.description}}</li>
                     <li>Prezzo: {{pizza.price}}</li>
                 </ul>
