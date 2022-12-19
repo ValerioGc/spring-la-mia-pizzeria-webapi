@@ -1,7 +1,7 @@
 <template>
     <main>
         <p v-if="msg != ''">
-            {{msg }}
+            {{msg}}
         </p>
         <div class="form-new-pizza py-3 form">
             
@@ -47,22 +47,20 @@
                     <label>Modifica pizza:</label>
                 
                     <label for="name">Inserisci il nome della pizza:</label>
-                    <input type="text" name="name" id="name" v-model="new_pizza.name" />
+                    <input type="text" name="name" id="name" v-model="pizza.name" />
                 
                     <label for="name">Inserisci la descrizione della pizza</label>
-                    <input type="text" name="description" id="description" v-model="new_pizza.description" />
+                    <input type="text" name="description" id="description" v-model="pizza.description" />
                 
                     <label for="name">Inserisci il prezzo della pizza</label>
-                    <input type="number" name="price" id="price" v-model="new_pizza.price" />
+                    <input type="number" name="price" id="price" v-model="pizza.price" />
                 
-                    <input type="submit" value="Modifica" />
-                    <button @click="editPizza(PIZZE_EDIT_ID_DEFAULT)">CANCEL</button>
+                    <input type="submit" value="Modifica" @click="this.showEditForm(pizza.id);"/>
                 </form>
 
 
                 <button>Dettagli</button>
                 <button @click="showEditForm(pizza.id)">Modifica</button>
-
                 <button>Elimina</button>
             </div>
         </div>
@@ -150,11 +148,27 @@
                     });
             },
         //  Modifica pizza
-            editPizza(id) {
+            editPizza(e) {
+                e.preventDefault();
+                const id = -1;
 
+                const pizza = this.getPizzaById(id);
+                this.editPizza(id);
+
+                axios.post(this.apiUrl + '/pizzas/update/' + id, pizza)
+                    .then(res => {
+                        const indx = this.getPizzaIndexById(id);
+                        
+                        const old = this.pizze[indx];
+                        const pizza = res.data;
+                        pizza.ingredients = old.ingredients;
+                        
+                        this.pizzasArray[indx] = pizza;
+                    });
             }
         }
     })
+
 </script>
 
 
