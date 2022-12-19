@@ -51,8 +51,20 @@ public class PizzaApiController {
 	
 //  Edit
 	@PostMapping("/update/{id}")
-	public void updatePizza(@PathVariable("id") int id, @Valid @RequestBody Pizza pizza) {
-
+	public Pizza updatePizza(@PathVariable("id") int id, @Valid @RequestBody Pizza pizza) {
+		Pizza newPizza = null;
+		try {
+			Pizza old = pizzaServ.findPizzaById(id).get();
+			
+			pizza.setIngredients(old.getIngredients());
+			newPizza = pizzaServ.save(pizza);
+			
+		} catch (Exception err) {
+			
+			System.err.println("Errore: \n" + err);
+		
+		}
+		return newPizza;
 	}
 	
 	

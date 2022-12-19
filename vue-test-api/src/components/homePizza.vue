@@ -41,8 +41,28 @@
                     </li>
                 </ul>
 
+
+                <form :id="'editPizza-' + pizza.id" @submit="editPizza" class="d-none">
+                
+                    <label>Modifica pizza:</label>
+                
+                    <label for="name">Inserisci il nome della pizza:</label>
+                    <input type="text" name="name" id="name" v-model="new_pizza.name" />
+                
+                    <label for="name">Inserisci la descrizione della pizza</label>
+                    <input type="text" name="description" id="description" v-model="new_pizza.description" />
+                
+                    <label for="name">Inserisci il prezzo della pizza</label>
+                    <input type="number" name="price" id="price" v-model="new_pizza.price" />
+                
+                    <input type="submit" value="Modifica" />
+                    <button @click="editPizza(PIZZE_EDIT_ID_DEFAULT)">CANCEL</button>
+                </form>
+
+
                 <button>Dettagli</button>
-                <button>Modifica</button>
+                <button @click="showEditForm(pizza.id)">Modifica</button>
+
                 <button>Elimina</button>
             </div>
         </div>
@@ -86,6 +106,10 @@
             })  
         },
         methods: {
+        //  Mostra menu edit pizza
+            showEditForm(id) {
+                document.getElementById("editPizza-" + id).classList.toggle("d-none");
+            },
         //  Trova Id pizza
             getPizzaIndexById(id) {
                 for (let i = 0; i < this.pizzasArray.length; i++) {
@@ -124,12 +148,18 @@
                         this.new_pizza_form = false;
                         this.msg = "Pizza creata con successo";
                     });
+            },
+        //  Modifica pizza
+            editPizza(id) {
+
             }
         }
     })
 </script>
 
 
-<style lang="sass" scoped>
-
+<style lang="scss" scoped>
+.d-none { 
+    display: none;
+}
 </style>
