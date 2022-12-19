@@ -17,7 +17,7 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/api/pizzas")
 @CrossOrigin("*")
-public class ApiController {
+public class PizzaApiController {
 
 	@Autowired
 	PizzaService pizzaServ;
@@ -41,8 +41,8 @@ public class ApiController {
 
 			newP = pizzaServ.save(pizza);
 			
-		} catch (Exception e) {
-			System.err.println("Errore: \n" + e);
+		} catch (Exception err) {
+			System.err.println("Errore: \n" + err);
 
 		}
 		return newP;
@@ -51,8 +51,8 @@ public class ApiController {
 	
 //  Edit
 	@PostMapping("/update/{id}")
-	public void updatePizza( @PathVariable("id") int id) {
-		
+	public void updatePizza(@PathVariable("id") int id, @Valid @RequestBody Pizza pizza) {
+
 	}
 	
 	

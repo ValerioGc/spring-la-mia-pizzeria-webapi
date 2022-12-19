@@ -86,7 +86,7 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner{
 	
 		
 		List<Ingredient> ing1 = new ArrayList<>();
-		ing1.add(i1);ing1.add(i5);
+		ing1.add(i1);ing1.add(i5);ing1.add(i2);
 		ing1.add(i6);ing1.add(i4);
 		
 		List<Ingredient> ing2 = new ArrayList<>();

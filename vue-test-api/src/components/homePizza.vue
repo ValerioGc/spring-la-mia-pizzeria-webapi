@@ -31,8 +31,16 @@
                     <li>Nome: {{pizza.name}}</li>
                     <li>Descrizione: {{pizza.description}}</li>
                     <li>Prezzo: {{pizza.price}}</li>
-                    <li>Ingredienti:</li>
+
+                    <li v-if="pizza.ingredients != null">
+                        Ingredienti: 
+                        <span v-for="(ingredients, indexIng) in pizza.ingredients" :key="indexIng"> {{ingredients.name}}, </span>
+                    </li>
+                    <li v-else>
+                        <span>Ingredienti non disponibili </span>
+                    </li>
                 </ul>
+
                 <button>Dettagli</button>
                 <button>Modifica</button>
                 <button>Elimina</button>
@@ -52,39 +60,71 @@
         name:"homePizza",
         data () {
             return {
-                apiUrl:"http://localhost:8080/api/pizzas",
+                apiUrl:"http://localhost:8080/api",
+                msg:"",
+                
+                // ---- Pizze ----
                 pizzasArray: [],
 
-                // new pizza
+                // ---- new pizza ----
                 new_pizza_form: false,
                 new_pizza: {},
-                msg:"",
+                // --------------------
             }
         },
         mounted() {
-            axios.get(this.apiUrl + "/index")
+            axios.get(this.apiUrl + "/pizzas/index")
             .then( response => {
-                
                 const pizzasList = response.data;
-                
                 if (pizzasList == null) return;
-                
-                this.pizzasArray = pizzasList;
-            })
 
+                this.pizzasArray = pizzasList;
+
+                for (let i = 0; i < pizzasList.length;  i++) {
+                    this.getIngredients(i);
+                }
+            })  
         },
         methods: {
+        //  Trova Id pizza
+            getPizzaIndexById(id) {
+                for (let i = 0; i < this.pizzasArray.length; i++) {
+                    const pizza = this.pizzasArray[i];
+                    
+                    if (pizza.id == id) {
+                        return i;
+                    }
+                }
+                return -1;
+            },
+        //  Trova pizza
+            getPizzaById(id) {
+                return this.pizzasArray[this.getPizzaIndexById(id)];
+            },
+        //  Ingredienti
+            getIngredients(id) {
+                axios.get(this.apiUrl + "/ingredients/pizza/" + id)
+                    .then(response => {
+                        const ingr = response.data;
+                        if (ingr == null) return;
+
+                        const indx = this.getPizzaIndexById(id);
+                        this.pizzasArray[indx].ingredients = ingr;
+                    });
+            },
+        //  Crea pizza
             createPizza(e) {
                 e.preventDefault();
-                axios.post(this.apiUrl + "/store", this.new_pizza)
+                axios.post(this.apiUrl + "/pizzas/store", this.new_pizza)
                     .then(response => {
                         const pizza = response.data;
                         if (pizza == null) return;
+
                         this.pizzasArray.push(pizza);
                         this.new_pizza_form = false;
                         this.msg = "Pizza creata con successo";
                     });
-            },
+            }
         }
     })
 </script>
