@@ -80,5 +80,13 @@ public class PizzaApiController {
 		}
 		return true;
 	}
+	
+//  Src 
+	@GetMapping("/src")
+	public List<Pizza> srcPizza(String query) {
+		
+		return pizzaServ.findByName(query);
+	}
 }
  
+
