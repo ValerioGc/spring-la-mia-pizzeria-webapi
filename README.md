@@ -1,6 +1,6 @@
-# spring-la-mia-pizzeria-security
+# spring-la-mia-pizzeria-webapi
 
-> Exercise about Spring Security and Authentication
+> Exercise about Spring API 
 
 <br/>
 
@@ -11,7 +11,7 @@
   <thead>
     <tr>
       <th colspan="4">Languages</th>
-      <th colspan="2">Framework</th>
+      <th colspan="3">Framework</th>
     </tr>
   </thead>
   <tbody align=center>
@@ -29,6 +29,9 @@
       </td>
       <td>
         <img align="center" src="https://github.com/ValerioGc/ValerioGc/blob/64e651615d68fb71ddfe78c747f2913d1ec29607/assets/skills&tools/frameworks/spring.svg" width="36" height="36" align="center" alt="Spring">
+      </td>
+      <td>
+        <img align="center" src="https://github.com/ValerioGc/ValerioGc/blob/64e651615d68fb71ddfe78c747f2913d1ec29607/assets/skills&tools/frameworks/vue.svg" width="36" height="36" align="center" alt="Vue">
       </td>
       <td>
         <img align="center" src="https://github.com/ValerioGc/ValerioGc/blob/64e651615d68fb71ddfe78c747f2913d1ec29607/assets/skills&tools/frameworks/bootstrap.svg" width="36" height="36" align="center" alt="Bootstrap">
@@ -49,6 +52,9 @@
       </td>
       <td>
         <a href="https://spring.io/" target="_blank" rel="noreferrer">Spring</a>
+      </td>
+      <td>
+        <a href="https://vuejs.com/" target="_blank" rel="noreferrer">VueJs</a>
       </td>
       <td>
         <a href="https://getbootstrap.com/" target="_blank" rel="noreferrer">Bootstrap</a>
