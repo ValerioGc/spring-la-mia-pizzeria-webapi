@@ -1,10 +1,10 @@
 <template>
     <main>
-        <p v-if="msg != ''">
-            {{msg}}
-        </p>
         <div class="form-new-pizza py-3 form">
             
+            <p v-if="msg != ''">
+                {{msg}}
+            </p>
             <button @click="new_pizza_form = true">Crea nuova pizza</button>
 
             <form v-if="new_pizza_form == true" @submit="createPizza">
@@ -26,11 +26,20 @@
 
         <div>
             <form @submit="searchPizzas()">
-                <input type="text" name="userSrc" placeholder="Cerca pizze"/>
+                <input type="text" name="srcValue" v-model="srcValue" placeholder="Cerca pizze"/>
                 <input type="submit" value="Cerca">
             </form>
         </div>
-
+        <div>
+            <h3>Ricerca:</h3>
+            <ul>
+                <li v-for="(pizzaR, index ) in resultsArray" :key="index">
+                    {{pizzaR.name}}
+                </li>
+            </ul>
+        </div>
+        
+        <hr  style="margin: 3rem 0;"/>
 
         <div v-if="pizzasArray.length > 0" class="card-container" >
             <div v-for="(pizza, index) in pizzasArray" :key="index" class="card">
@@ -71,16 +80,9 @@
                 <button @click="deletePizza(pizza.id)">Elimina</button>
             </div>
         </div>
-
         <div v-else>
             <h3>Nessuna Pizza presente!</h3>
         </div>
-        <hr>
-        <ul>
-            <li v-for="(pizzaR, index ) in resultsArray" :key="index">
-                {{pizzaR.name}}
-            </li>
-        </ul>
     </main>
 </template>
 
@@ -101,8 +103,9 @@
                 // ---- new pizza ----
                 new_pizza_form: false,
                 new_pizza: {},
-                // --------------------
 
+                // ---Search -----
+                srcValue: '',
                 resultsArray:[]
             }
         },
@@ -114,7 +117,7 @@
 
                 this.pizzasArray = pizzasList;
 
-                for (let i = 0; i < pizzasList.length;  i++) {
+                for (let i = 1; i <= pizzasList.length;  i++) {
                     this.getIngredients(i);
                 }
             })  
@@ -124,11 +127,16 @@
             showEditForm(id) {
                 document.getElementById("editPizza-" + id).classList.toggle("d-none");
             },
-            searchPizzas(name) {
-                axios.get(this.apiUrl + '/pizzas/src' + name)
+            searchPizzas() {
+                if (this.searchValue == '') {
+                    this.getPizzas()
+                    return
+                }
+                axios.get(this.apiUrl + '/pizzas/src', this.srcValue)
                     .then(response => {
                         const srcRes = response.data;
                         if (!srcRes) return;
+                        console.log(response);
                     
                         this.resultsArray = srcRes;
                     });

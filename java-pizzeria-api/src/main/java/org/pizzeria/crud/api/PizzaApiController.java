@@ -82,11 +82,12 @@ public class PizzaApiController {
 	}
 	
 //  Src 
-	@GetMapping("/src")
-	public List<Pizza> srcPizza(String query) {
-		
+	@GetMapping("/src/{query}")
+	public List<Pizza> srcPizzaByName(@PathVariable("query") String query) {
 		return pizzaServ.findByName(query);
 	}
+
+	
 }
  
 
