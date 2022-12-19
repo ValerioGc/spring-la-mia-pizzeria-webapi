@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  xmlns="http://www.sprinfgramework.org/schema/security">
+ 
+	<th:block th:replace="fragments :: headMain('Home Pizzeria Java')"></th:block>
+ 
+	<body>
+		<div class="container-fluid main-container bg-light">
+
+			<!-- Header --> 
+			<th:block th:replace="fragments :: header()"></th:block>
+
+			<div class="container-app px-5 py-3 row justify-content-center align-items-stretch flex-nowrap">
+			
+				<!-- Aside NavBar --> 
+				<th:block th:replace="fragments :: asideNav(${routeName})"></th:block>
+				
+				<main class="col-9">
+			
+					<!--  main title -->
+					<th:block th:replace="fragments :: mainTitle('Home Pizzeria')"></th:block>  
+
+					<h4 class="m-auto py-5 my-5 text-center">Benvenuto nella homepage della pizzeria</h4>
+			
+					<p class="fw-bold text-center ">Link test Autenticazione</p>
+					
+					<ul class="list-group w-25 m-auto text-center">
+						<li class="list-group-item">
+							<a href="/home">Home</a>
+						</li>
+						<li sec:authorize="hasAuthority('USER')" class="list-group-item">	
+							<a href="/user">User | user - pwd</a>
+						</li>
+						<li sec:authorize="hasAuthority('ADMIN')" class="list-group-item">	
+							<a href="/admin">Admin | admin - pwd2</a>
+						</li>
+						<li class="list-group-item" sec:authorize="hasAnyAuthority('USER', 'ADMIN')">
+							<a href="/useradmin">UserAdmin, | userAdmin - pwd3</a>
+						</li>
+					</ul>
+					
+					
+					
+					
+					
+					<!-- ------------------------ Authorize test ----------------------------- -->
+					
+					<div class="my-5 text-center">
+					
+						<div>
+							<div sec:authorize="!isAuthenticated()">
+							  Utente non autenticato
+							</div>
+							<div sec:authorize="isAuthenticated()">
+							  Utente autenticato
+							</div>
+						</div>
+						
+						<div sec:authorize="hasAuthority('ADMIN')">
+						  Auth come Admin
+						</div>
+						<div sec:authorize="hasAuthority('USER')">
+						  Auth come USER
+						</div>
+
+						<div>
+							Utente: <span sec:authentication="name"></span> <br/>
+						</div>
+						
+					</div>
+												
+				<!-- ------------------------ Authorize test ----------------------------- -->
+					
+						
+				</main>
+			</div>		
+		</div>
+		
+		<!-- Scripts -->
+		<script th:src="@{/js/main.js}"></script>	
+		<script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.bundle.min.js}"></script>	
+	</body>
+</html>
