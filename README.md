@@ -1,6 +1,33 @@
 # spring-la-mia-pizzeria-webapi
 
 > Reproduction of a restaurant website with an administrative area protected by authentication, to modify the database data made with Java and Spring. The front end, made with Vue CLI, is served by the Java application API.
+
+<br/>
+
+## *_Front-End Setup Project_*
+
+<table align="center">
+  <tbody>
+    <tr>
+        <td>:arrow_forward: Project setup:</td>
+        <td><strong>npm install</strong></td>  
+    </tr>
+    <tr>
+        <td>:arrow_forward: Compiles and hot-reloads for development:</td>
+        <td><strong>npm run serve</strong></td>
+    </tr>      
+    <tr>
+        <td>:arrow_forward: Compiles and minifies for production:</td>
+        <td><strong>npm run build</strong></td>
+    </tr>
+    <tr>
+        <td>:arrow_forward: Lints and fixes files:</td>
+        <td><strong>npm run lint</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+
 <br/>
 
 ## *_Back-end development tools_*
@@ -81,3 +108,39 @@
     </tr>
   </tbody>
 </table>
+
+<br />
+
+
+
+## *_Previews:_*
+
+
+<div align="center">
+  
+### Back-End
+  
+  <img align="center" src="/previews/pizzeria-webapi.gif" alt="Gif pizzeria" />
+  
+  <br/> &nbsp;
+  
+  <img align="center" src="/previews/pizzeria-webapi-thumbs.png" alt="Thumbnails pizzeria" />
+ <div>
+   
+--------
+   
+<div align="center">
+  
+  ### Front-end
+  
+  <img align="center" src="/previews/front-pizzeria-webapi.gif" alt="Gif pizzeria" />
+  
+  <br/> &nbsp;
+  
+  <img align="center" src="/previews/front-pizzeria-webapi-thumbs.png" alt="Thumbnails pizzeria" />
+ <div>
+   
+
+--------
+
+
