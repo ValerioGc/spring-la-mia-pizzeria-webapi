@@ -20,7 +20,7 @@
 	<h4 class="py-3 fw-bold text-light">Operazioni:</h4>
 	<nav>
 		<ul class="aside-nav list-group list-unstyled ">
-			<li th:class="'nav-el list-group-item ' + ${routeName.equals('home') ? 'active' : ''}">	
+			<li th:class="'list-group-item ' + ${routeName.equals('home') ? 'active' : ''}">	
 				<a href="/" th:class="'d-inline-block w-100 text-decoration-none' + ${routeName.equals('home') ? ' bdy' : ''} "><i class="mx-2 fa-solid fa-house"></i>Homepage</a>
 			</li>
 			<li th:class="'list-group-item ' + ${routeName.equals('search') ? 'active' : ''}">	
@@ -41,13 +41,13 @@
 					Pizza <i class="fa-solid fa-angle-down mx-2"></i>
 				</a>
 				<ul class="list-group d-none" id="pizza-actions">
-					<li th:class="'nav-el list-group-item ' + ${routeName.equals('pizza') ? 'active' : ''}">
+					<li th:class="'list-group-item ' + ${routeName.equals('pizza') ? 'active' : ''}">
 						<a href="/pizza/index" th:class="'d-inline-block w-100 text-decoration-none' + ${routeName.equals('pizza') ? ' bdy' : ''}"><i class="mx-2 fa-solid fa-list"></i>Vedi tutte le pizze</a>
 					</li>
-					<li th:class="'nav-el list-group-item ' + ${routeName.equals('searchPizza') ? 'active' : ''}">	
+					<li th:class="'list-group-item ' + ${routeName.equals('searchPizza') ? 'active' : ''}">	
 						<a href="/pizza/search" th:class="'d-inline-block w-100 text-decoration-none' + ${routeName.equals('searchPizza') ? ' bdy' : ''} "><i class="mx-2 fa-magnifying-glass fa-solid"></i>Cerca Pizza</a>
 					</li>
-					<li sec:authorize="hasAuthority('ADMIN')"						th:class="'nav-el list-group-item ' + ${routeName.equals('newPizza') ? 'active' : ''}">
+					<li sec:authorize="hasAuthority('ADMIN')"						th:class="'list-group-item ' + ${routeName.equals('newPizza') ? 'active' : ''}">
 						
 						<a href="/admin/pizza/create" th:class="'d-inline-block w-100 text-decoration-none' + ${routeName.equals('newPizza') ? ' bdy' : ''} "><i class="fa-solid fa-pizza-slice mx-2"></i>Crea una nuova pizza</a>
 					</li>
@@ -61,13 +61,13 @@
 					Drinks <i class="fa-solid fa-angle-down mx-2"></i>
 				</a>
 				<ul class="list-group d-none" id="drink-actions">
-					<li th:class="'nav-el list-group-item ' + ${routeName.equals('drink') ? 'active' : ''}">
+					<li th:class="'list-group-item ' + ${routeName.equals('drink') ? 'active' : ''}">
 						<a href="/drink/index" th:class="'d-inline-block w-100 text-decoration-none' + ${routeName.equals('drink') ? ' bdy': ''}"><i class="mx-2 fa-solid fa-list"></i>Vedi tutti i drinks</a>
 					</li>
-					<li th:class="'nav-el list-group-item ' + ${routeName.equals('searchDrink') ? 'active ' : ''}">	
+					<li th:class="'list-group-item ' + ${routeName.equals('searchDrink') ? 'active ' : ''}">	
 						<a href="/drink/search" th:class="'d-inline-block w-100 text-decoration-none' + ${routeName.equals('searchDrink') ? ' bdy' : ''}"><i class="mx-2 fa-magnifying-glass fa-solid"></i>Cerca Drink</a>
 					</li>
-					<li sec:authorize="hasAuthority('ADMIN')"						th:class="'nav-el list-group-item ' + ${routeName.equals('newDrink') ? 'active' : ''}">
+					<li sec:authorize="hasAuthority('ADMIN')"						th:class="'list-group-item ' + ${routeName.equals('newDrink') ? 'active' : ''}">
 						
 						<a href="/admin/drink/create" th:class="'d-inline-block w-100 text-decoration-none' + ${routeName.equals('newDrink') ? ' bdy' : ''} "><i class="fa-solid fa-martini-glass mx-2"></i>Crea un nuovo drink</a>
 					</li>
