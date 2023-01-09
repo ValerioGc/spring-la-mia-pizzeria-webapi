@@ -133,11 +133,7 @@
   
   ### Front-end
   
-  <img align="center" src="/previews/front-pizzeria-webapi.gif" alt="Gif pizzeria" />
-  
-  <br/> &nbsp;
-  
-  <img align="center" src="/previews/front-pizzeria-webapi-thumbs.png" alt="Thumbnails pizzeria" />
+  <img align="center" src="/previews/front-pizzeria-webapi.png" alt="Thumbnails pizzeria" />
  <div>
    
 
